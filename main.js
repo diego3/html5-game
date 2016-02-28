@@ -1,6 +1,7 @@
 
 //This is our entry point to the game :)
 
+//console.log(cc);
 
 window.onload = function(){
     cc.game.onStart = function(){
@@ -8,7 +9,7 @@ window.onload = function(){
         //load resources
         cc.LoaderScene.preload(gameResources, function () {
             
-            cc.director.runScene(new MyScene());
+            cc.director.runScene(new GameScene());
         }, this);
     };
     cc.game.run("gameCanvas");

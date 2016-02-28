@@ -34,6 +34,6 @@ var gameResources = [
 ".$str2."
 ];";
     $js = str_replace(array("\\",".."), array("/",""), $js);
-    file_put_contents("../src/loadassets.js", $js);
+    file_put_contents("../src/loadassets_all.js", $js);
 }
 
