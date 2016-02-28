@@ -1,5 +1,7 @@
 <?php
 
+define("HOST_GAME", "/cocos2dmygame");
+
 $str1 = "";
 $str2 = "";
 function visit($path) {
@@ -16,7 +18,7 @@ function visit($path) {
         if($p->isDir() && !$p->isDot()) {
             visit($path. DIRECTORY_SEPARATOR . $p->getFilename());
         }else if(!$p->isDot()) {
-            $str1 .= "  ".str_replace(".", "_", $p->getFilename()) . ' : "' . $path.DIRECTORY_SEPARATOR.$p->getFilename() .'",'. PHP_EOL;
+            $str1 .= "  ".str_replace(".", "_", $p->getFilename()) . ' : "' . HOST_GAME . $path. DIRECTORY_SEPARATOR . $p->getFilename() .'",'. PHP_EOL;
             $str2 .= "  res.".str_replace(".", "_", $p->getFilename()).",". PHP_EOL;
         }
     }
@@ -31,28 +33,7 @@ var res = {
 var gameResources = [
 ".$str2."
 ];";
-    
+    $js = str_replace(array("\\",".."), array("/",""), $js);
     file_put_contents("../src/loadassets.js", $js);
 }
-
-//file_put_contents("../src/assets.js", $data);
-
-
-/*
-
-var res = {
-    helloWorld_png : "assets/HelloWorld.png",
-    Tiles_box_png : "assets/basepack/Tiles/box.png",
-    bg_simple: "assets/basepack/bg.png",
-};
-
-
-var gameResources = [
-    res.helloWorld_png,
-    res.Tiles_box_png
-];
- 
-  
-  
- */
 
